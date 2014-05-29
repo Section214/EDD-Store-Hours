@@ -169,7 +169,7 @@ if( !class_exists( 'EDD_Store_Hours' ) ) {
         public function plugin_metalinks( $links, $file ) {
             if( $file == plugin_basename( __FILE__ ) ) {
                 $help_link = array(
-                    '<a href="https://easydigitaldownloads.com/support/forum/add-on-plugins/store-hours/" target="_blank">' . __( 'Support Forum', 'edd-store-hours' ) . '</a>'
+                    '<a href="http://section214.com/support/forum/edd-store-hours/" target="_blank">' . __( 'Support Forum', 'edd-store-hours' ) . '</a>'
                 );
 
                 $docs_link = array(
