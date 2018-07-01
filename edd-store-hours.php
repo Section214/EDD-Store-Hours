@@ -110,14 +110,9 @@ if( !class_exists( 'EDD_Store_Hours' ) ) {
             // Edit plugin metalinks
             add_filter( 'plugin_row_meta', array( $this, 'plugin_metalinks' ), null, 2 );
 
-            // Add Store Hours tab to EDD settings
-            add_filter( 'edd_settings_tabs', array( $this, 'add_settings_tab' ), 1 );
-
             // Register settings
-            add_action( 'admin_init', array( $this, 'register_settings' ) );
-
-            // Register settings
-            add_filter( 'edd_settings_hours', array( $this, 'settings' ), 1 );
+			add_filter( 'edd_settings_sections_extensions', array( $this, 'settings_section' ) );
+			add_filter( 'edd_settings_extensions', array( $this, 'register_settings' ) );
 
             // Sanitize hours fields
             add_filter( 'edd_settings_hours_sanitize', array( $this, 'sanitize' ), 1 );
@@ -182,62 +177,21 @@ if( !class_exists( 'EDD_Store_Hours' ) ) {
             return $links;
         }
 
-
-        /**
-         * Add settings tab
-         *
-         * @access      public
-         * @since       1.0.0
-         * @param       array $tabs The existing settings tabs
-         * @return      array $tabs The modified settings tabs
-         */
-        public function add_settings_tab( $tabs ) {
-            $tabs['hours'] = __( 'Store Hours', 'edd-store-hours' );
-
-            return $tabs;
-        }
-
-
-        /**
-         * Register settings helper since EDD
-         * doesn't act like I think it should!
-         *
-         * @access      public
-         * @since       1.0.0
-         * @return      void
-         */
-        public function register_settings() {
-            add_settings_section(
-                'edd_settings_hours',
-                __return_null(),
-                '__return_false',
-                'edd_settings_hours'
-            );
-
-            foreach( $this->settings() as $option ) {
-
-                $name = isset( $option['name'] ) ? $option['name'] : '';
-
-                add_settings_field(
-                    'edd_settings_hours[' . $option['id'] . ']',
-                    $name,
-                    function_exists( 'edd_' . $option['type'] . '_callback' ) ? 'edd_' . $option['type'] . '_callback' : 'edd_missing_callback',
-                    'edd_settings_hours',
-                    'edd_settings_hours',
-                    array(
-                        'id'        => isset( $option['id'] ) ? $option['id'] : null,
-                        'desc'      => !empty( $option['desc'] ) ? $option['desc'] : '',
-                        'name'      => isset( $option['name'] ) ? $option['name'] : null,
-                        'section'   => 'hours',
-                        'size'      => isset( $option['size'] ) ? $option['size'] : null,
-                        'options'   => isset( $option['options'] ) ? $option['options'] : '',
-                        'std'       => isset( $option['std'] ) ? $option['std'] : ''
-                    )
-                );
-            }
-        }
-
-
+		/**
+		 * Registers the subsection for EDD Settings.
+		 *
+		 * @access public
+		 * @since  1.1
+		 *
+		 * @param  array $sections Settings Sections.
+		 *
+		 * @return array Sections with ActiveCampaign added.
+		 */
+		public function settings_section( $sections ) {
+			$sections['storehours'] = __( 'Store Hours', 'edd-store-hours' );
+			return $sections;
+		}
+		
         /**
          * Add settings
          *
@@ -246,10 +200,10 @@ if( !class_exists( 'EDD_Store_Hours' ) ) {
          * @param       array $settings the existing EDD settings array
          * @return      array $settings the filtered EDD settings array
          */
-        public function settings() {
-            $settings = array(
+        public function register_settings( $settings ) {
+            $edd_sh_settings = array(
                 array(
-                    'id'    => 'edd_store_hours',
+                    'id'    => 'storehours_settings',
                     'name'  => '<strong>' . __( 'Store Hours', 'edd-store-hours' ) . '</strong>',
                     'desc'  => __( 'Configure Store Hours', 'edd-store-hours' ),
                     'type'  => 'header'
@@ -368,7 +322,13 @@ if( !class_exists( 'EDD_Store_Hours' ) ) {
                 ),*/
             );
 
-            return $settings;
+			// If EDD is at version 2.5 or later...
+			if ( version_compare( EDD_VERSION, 2.5, '>=' ) ) {
+				// Use the previously noted array key as an array key again and next your settings
+				$edd_sh_settings = array( 'storehours' => $edd_sh_settings );
+			}
+			
+            return array_merge( $settings, $edd_sh_settings );
         }
 
 
