@@ -28,7 +28,9 @@ add_action( 'wp_enqueue_scripts', 'edd_store_hours_load_scripts' );
  * @since       1.0.0
  * @return      void
  */
-function edd_store_hours_load_admin_scripts() {
+function edd_store_hours_load_admin_scripts( $hook ) {
+	global $edd_settings_page;
+
     if( $hook == $edd_settings_page ) {
         wp_enqueue_script( 'jquery-ui-datepicker' );
         wp_enqueue_script( 'jquery-ui-slider' );
