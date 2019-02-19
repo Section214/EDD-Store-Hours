@@ -100,6 +100,8 @@ function edd_store_hours_is_closed() {
 	// If the time is PM we need to account for 24 hour time
 	if ( $open < 1200 && strpos( $open_time, 'pm' ) ) {
 		$open += 1200;
+	} else if ( $open >= 1200 && strpos( $open_time, 'am' ) ) {
+		$open -= 1200;
 	}
 
 	$close_time = strtolower( edd_get_option( 'edd_store_hours_' . $today . '_close', '2359' ) );
@@ -108,6 +110,8 @@ function edd_store_hours_is_closed() {
 	// If the time is PM we need to account for 24 hour time
 	if ( $close < 1200 && strpos( $close_time, 'pm' ) ) {
 		$close += 1200;
+	} else if ( $close >= 1200 && strpos( $close_time, 'am' ) ) {
+		$close -= 1200;
 	}
 
 	$override   = edd_get_option( 'edd_store_hours_closed_now', false ) ? true : false;
