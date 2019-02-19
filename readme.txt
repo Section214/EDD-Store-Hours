@@ -1,12 +1,11 @@
 === Easy Digital Downloads - Store Hours ===
-Author URI: http://section214.com
-Plugin URI: http://section214.com
-Contributors: section214
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7FMLUWG3SMMJY
+Author URI: https://easydigitaldownloads.com
+Plugin URI: https://easydigitaldownloads.com/downloads/edd-store-hours
+Contributors: easydigitaldownloads, cklosows, section214
 Tags: download, downloads, e-store, eshop, digital downloads, e-downloads, ecommerce, e commerce, e-commerce, selling, wp-ecommerce, wp ecommerce, edd, easy digital downloads, hours, schedule
-Requires at least: 3.7
-Tested up to: 3.9
-Stable Tag: 1.0.1
+Requires at least: 4.4
+Tested up to: 5.0.3
+Stable Tag: 1.1.0
 
 Easily handle store hours of operation on your Easy Digital Downloads-powered site
 
@@ -28,9 +27,9 @@ Planned features include:
 
 * Flexible notification bars to notify users when your store is closed
 * Live calendar to pre-define closed days beyond the traditional day-to-day (holidays, vacations, and the like)
-* The ability to shut the store down completely when closed, redirecting the user to a splash page or offsite
+* The ability to shut the store down completely when closed, redirecting the user to a splash page or off-site
 
-**Follow this plugin on [GitHub](https://github.com/Section214/EDD-Store-Hours)**
+**Follow this plugin on [GitHub](https://github.com/easydigitaldownloads/edd-store-hours)**
 
 == Installation ==
 
@@ -39,10 +38,15 @@ Planned features include:
 
 == Changelog ==
 
-= Version 1.0.1 (May 26, 2015) =
+= Version 1.1.0, July 30, 2016 =
 
-* Replace PHP4 contructors
+* Codebase cleanup
+* Update to new EDD settings standards
 
-= Version 1.0.0 (May 29, 2014) =
+= Version 1.0.1, May 26, 2015 =
+
+* Replace PHP4 constructors
+
+= Version 1.0.0, May 29, 2014, =
 
 * Initial release!

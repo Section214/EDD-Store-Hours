@@ -1,4 +1,4 @@
-.edd-store-hours { width: 117px; }
+.edd-store-hours { width: 125px; }
 
 /* css for timepicker */
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
@@ -14,26 +14,24 @@
 .ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
 
 .divclearable {
-	display: -moz-inline-stack;
-	display: inline-block;
-	zoom:1;
-	*display:inline;
-	vertical-align:middle;
-	position: relative;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom:1;
+    vertical-align:middle;
+    position: relative;
 }
 
 .clearlink {
-	position: absolute;
-	top: 5px;
-	right: 7px;
-	cursor: pointer;
-	display: -moz-inline-stack;
-	display: inline-block;
-	zoom:1;
-	*display:inline;
-	height: 12px;
-	width: 12px;
-	border: 0px solid;
+    position: absolute;
+    top: 5px;
+    right: 7px;
+    cursor: pointer;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom:1;
+    height: 12px;
+    width: 12px;
+    border: 0px solid;
 }
 
 .edd-store-hours-tag-name {
@@ -47,9 +45,18 @@
     font-size: .75em;
 }
 
-#wpadminbar #wp-admin-bar-edd-store-hours-bar,
-#wpadminbar #wp-admin-bar-edd-store-hours-bar .ab-item:hover {
-	background-color: #f44;
-	background-image: -moz-linear-gradient(bottom, #d00, #f44);
-	background-image: -webkit-gradient(linear, left bottom, left top, from(#d00), to(#f44));
+.download_page_edd-settings .wp-picker-container {
+    vertical-align: -8px;
+}
+
+ul.ab-top-secondary>li.edd-store-hours-bar,
+ul.ab-top-secondary>li.edd-store-hours-bar .ab-item:visited,
+ul.ab-top-secondary>li.edd-store-hours-bar .ab-item:active {
+    background: #f44 !important;
+    color: #eee !important;
+}
+
+ul.ab-top-secondary>li.edd-store-hours-bar .ab-item:hover {
+    background: #f44 !important;
+    color: #333 !important;
 }
